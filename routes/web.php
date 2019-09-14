@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 Route::get("/create_account", 'UserController@accountCreate');
 Route::post("/register", 'UserController@accountStore');
+Route::get("/dashboard", 'UserController@dashboardShow');
+Route::get("/verify_email/{verification_string}", 'UserController@emailVerify');
