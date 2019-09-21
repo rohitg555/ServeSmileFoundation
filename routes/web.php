@@ -19,3 +19,9 @@ Route::get("/create_account", 'UserController@accountCreate');
 Route::post("/register", 'UserController@accountStore');
 Route::get("/dashboard", 'UserController@dashboardShow');
 Route::get("/verify_email/{verification_string}", 'UserController@emailVerify');
+Route::get("/forgot_password", 'UserController@passwordForgot');
+Route::post("/forgot_password_verify_email", 'UserController@sendVerificationEmail');
+Route::get("/reset_password/{verification_string}", 'UserController@passwordReset');
+Route::post("/passwordReset", 'UserController@passwordUpdate');
+
+
