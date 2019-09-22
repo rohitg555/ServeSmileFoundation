@@ -24,5 +24,6 @@ Route::get("/forgot_password", 'UserController@passwordForgot');
 Route::post("/forgot_password_verify_email", 'UserController@sendVerificationEmail');
 Route::get("/reset_password/{verification_string}", 'UserController@passwordReset');
 Route::post("/passwordReset", 'UserController@passwordUpdate');
-
+Route::get("/donationForm" , 'UserController@donationForm');
+Route::post("/donationForm" , 'UserController@ngoDonation');
 

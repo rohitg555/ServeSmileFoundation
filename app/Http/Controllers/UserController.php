@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Mail;
 use DB;
+use App\Contribution;
 
 class UserController extends Controller
 {
@@ -121,6 +122,19 @@ class UserController extends Controller
 
             return view("reset_password", compact('response', 'email'));
 
+           }
+           public function donationForm(Request $request){
+            return view("ngo_form");
+           }
+           public function ngoDonation(Request $request){
+            $data = new Contribution();
+            $data->ngo_name = $request->ngo_name;
+            $data->aadhaar_card_no = $request->aadhaar_card_no;
+            $data->email = $request->email;
+            $data->mobile_number = $request->mobile_number;
+            $data->amount = $request->amount;
+            $data->save();
+            // dd("jhal");
            }
 
 

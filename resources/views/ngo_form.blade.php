@@ -11,6 +11,11 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
+ <style type="text/css">
+   .mandatory {
+      color: #f00;
+   }
+ </style>
 <body>
 	<nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -36,16 +41,30 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-offset-6 col-sm-3">
-			<h3>NGO form registration</h3>
-			<form>
+			<h3>Donation form</h3>
+			<form action="/donationForm" method="POST">
+        {{csrf_field()}}
 				<div class="form-group">
 					<label for="name">NGO NAME <span class="mandatory">*</span></label>
-					<input type="text" name="NGO name" id="name" class="form-control">
+					<input type="text" name="ngo_name" id="name" class="form-control">
 				</div>
 				<div class="form-group">
 					<label for="name">Aadhaar card no <span class="mandatory">*</span></label>
-					<input type="number" name="Aadhaar card number" id="number" class="form-control">
+					<input type="number" name="aadhaar_card_no" id="number" class="form-control">
 				</div>
+        <div class="form-group">
+          <label for="email">Email<span class="mandatory">*</span></label>
+          <input type="email" name="email" id="email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="number">Mobile number<span class="mandatory">*</span></label>
+          <input type="number" name="mobile_number" id="number" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="number">Amount<span class="mandatory">*</span></label>
+          <input type="number" name="amount" id="number" class="form-control">
+        </div>
+        <button class="btn btn-success">Submit</button>
 			</form>
 			
 		</div>
