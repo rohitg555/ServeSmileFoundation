@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get("/create_account", 'UserController@accountCreate');
 Route::post("/register", 'UserController@accountStore');
-Route::get("/Ngo_register", 'clintController@NgoaccountStore');
+Route::get("/ngo_register", 'clientController@ngoAccountStore');
 Route::get("/dashboard", 'UserController@dashboardShow');
 Route::get("/verify_email/{verification_string}", 'UserController@emailVerify');
 Route::get("/forgot_password", 'UserController@passwordForgot');

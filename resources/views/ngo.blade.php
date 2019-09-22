@@ -42,7 +42,7 @@
     <div class="row">
         <div class="col-sm-offset-3 col-sm-6">
             <h3>Crate an account</h3>
-            <form action="/Ngo_register">
+            <form action="/ngo_register">
                 {{ csrf_field() }}
               <div class="form-group">
                 <label for="name">Full_Name:<span class="mandatory">*</span></label>

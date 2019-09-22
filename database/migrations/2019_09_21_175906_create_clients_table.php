@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClintsTable extends Migration
+class CreateClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateClintsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clints', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('Full_Name');
             $table->string('email');
@@ -31,6 +31,6 @@ class CreateClintsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clints');
+        Schema::dropIfExists('clients');
     }
 }
