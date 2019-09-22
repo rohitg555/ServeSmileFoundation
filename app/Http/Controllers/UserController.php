@@ -22,7 +22,6 @@ class UserController extends Controller
     	 $user->mobile = $request->mobile;
     	 $user->password = $request->password;
          $user->verification_string = $verification_string;
-    	 $user->save();
 
          // dd($verification_string);
 
@@ -32,8 +31,9 @@ class UserController extends Controller
          {
             $message->from('akashb.m786@gmail.com');
             $message->to($message_data['email'])->subject('Verification of Serve Smile Foundation');
-        });         
-
+        });
+            
+        $user->save();
 
 
          return redirect('/dashboard');
@@ -41,6 +41,7 @@ class UserController extends Controller
     public function dashboardShow() {
         return view('dashboard');
     }
+
     public function emailVerify($verification_string) {
         // dd($verification_string);
         $flag = User::where('verification_string', $verification_string)->first();
@@ -55,6 +56,7 @@ class UserController extends Controller
         }
         return view('verify_email');
     }
+   
 
     public function passwordForgot(){
         return view("forgot_password");
