@@ -1,48 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>S2F || Log In ::</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <style type="text/css">
-      .mandatory {
-        color: #f00;
-      }
-    </style>
-</head>
-<body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">S2F</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
-    </ul>
-  </div>
-</nav>
+@include('include.app')
+@include('include.header')
 <div class="container">
     <div class="row">
         <div class="col-sm-offset-3 col-sm-6">
             <h3>Crate an account</h3>
-            <form action="/Ngo_register">
+            <form action="/ngo_store" method="POST">
                 {{ csrf_field() }}
               <div class="form-group">
                 <label for="name">Full_Name:<span class="mandatory">*</span></label>
@@ -53,33 +15,33 @@
                 <input type="email" class="form-control" name="email" id="email" required="required">
               </div>
               <div class="form-group">
-                <label for="email">Alternation_Email:</label>
-                <input type="email" class="form-control" name="email" id="email" required="required">
+                <label for="email">Alternate Email:</label>
+                <input type="email" class="form-control" name="alternate_email" id="email">
               </div>
               <div class="form-group">
                 <label for="email">Mobile:<span class="mandatory">*</span></label>
                 <input type="number" class="form-control" name="mobile" id="email" required="required">
               </div>
               <div class="form-group">
-                <label for="email">Alternation Mobile:</label>
-                <input type="number" class="form-control" name="mobile" id="email" required="required">
+                <label for="email">Alternate Mobile:</label>
+                <input type="number" class="form-control" name="alternate_mobile" id="email">
               </div>
               <div class="form-group">
                 <label for="Address">Address:</label>
-                <textarea class="form-control" rows="5" id="Address"></textarea>
+                <textarea class="form-control" rows="5" id="Address" name="address"></textarea>
               </div> 
-              <label>global_desisters:</label>
+              <label>disaster:</label>
               <div class="checkbox">
-                <label><input type="checkbox" value="">Earthquake.</label>
+                <label><input type="checkbox" name="disaster[]"  value="Earthquake">Earthquake.</label>
               </div>
               <div class="checkbox">
-                <label><input type="checkbox" value="">Floods</label>
+                <label><input type="checkbox" name="disaster[]" value="Floods">Floods</label>
               </div>
               <div class="checkbox disabled">
-                <label><input type="checkbox" value="">Acid_Attack_Victim</label>
+                <label><input type="checkbox" name="disaster[]" value="Acid_Attack_Victim">Acid_Attack_Victim</label>
               </div>
               <div class="checkbox disabled">
-                <label><input type="checkbox" value="">Tsunami</label>
+                <label><input type="checkbox" name="disaster[]" value="Tsunami">Tsunami</label>
               </div> 
               <div class="form-group">
                 <label for="pwd">Password:<span class="mandatory">*</span></label>

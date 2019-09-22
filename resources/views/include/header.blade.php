@@ -16,6 +16,8 @@
       </li>
       <li><a href="{{url('/donationForm')}}">donation</a></li>
       <li><a href="#">Page 3</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="{{url('/ngo_register')}}">ngo_registration</a></li>
     </ul>
   </div>
 </nav>
