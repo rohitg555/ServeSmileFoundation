@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientsTable extends Migration
+class CreateNgoInformationTablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
+        Schema::create('ngo_information_tables', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('Full_Name');
-            $table->string('email');
-            $table->integer('mobile');
-            $table->text('Address');
-            $table->string('password');
+            $table->integer('ngo_id');
+            $table->string('agreement')->nullable();
+            $table->string('email_verification')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('ngo_information_tables');
     }
 }

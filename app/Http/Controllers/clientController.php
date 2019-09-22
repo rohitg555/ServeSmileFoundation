@@ -4,29 +4,52 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\client;
+use App\NgoInformationTable;
 
 
 class clientController extends Controller
 {
-	// public function NgoaccountStore(){
-	// 	return view('ngo_register');
-	// }
+	public function index(){
+		return view('ngo');
+	}
 
      public function ngoAccountStore(Request $request)
     {
         // $verification_string = md5(microtime());
         // dd($request->all());
          $client = new client();
-         $client->Full_Name = $request->Full_Name;
+         $client->full_name = $request->name;
          $client->email = $request->email;
-         // $client->Alternation_Email = $request->Alternation_Email;
+         $client->alternate_email = $request->alternate_email;
          $client->mobile = $request->mobile;
-         // $client->Alternation_mobile = $request->Alternation_mobile;
-         $client->Address = $request->Address;
-         $global_desisters = implode(',', $request->global_desisters);
-         $client->global_desisters = $global_desisters;
+         $client->alternate_mobile = $request->alternate_mobile;
+         $client->address = $request->address;
+         $disaster = implode(',', $request->disaster);
+         $client->disaster = $disaster;
          $client->password = $request->password;
          // $client->verification_string = $verification_string;
          $client->save();
+         $ngo_id = $client->id;
+         // dd($ngo_id);
+         $ngo_info = new NgoInformationTable();
+         $ngo_info->ngo_id = $client->id;
+         $ngo_info->save();
+         $url = '/ngo_dashboard/'.$ngo_id;
+         return redirect($url);
+    }
+    public function ngoDashboard(Request $request, $ngo_id){
+        // dd($ngo_id);
+        $data = NgoInformationTable::where('ngo_id' , $ngo_id)->first();
+        // dd($data->agreement);
+        // dd($data->email_verification);
+        if ($data->agreement == null) {
+            return view('privacy_policy');
+        }
+        else {
+            // "update agreement to curent date"
+        }
+        $data->agreement;
+
+
     }
 }
