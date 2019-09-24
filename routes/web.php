@@ -28,3 +28,5 @@ Route::post("/passwordReset", 'UserController@passwordUpdate');
 Route::get("/donationForm" , 'UserController@donationForm');
 Route::post("/donationForm" , 'UserController@ngoDonation');
 Route::get("/ngo_dashboard/{ngo_id}", 'clientController@ngoDashboard');
+Route::get("/privacyPolicy" , 'clientController@privacy');
+Route::post("/privacyPolicy" , 'clientController@privacyPolicy');

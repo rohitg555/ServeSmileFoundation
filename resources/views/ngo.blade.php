@@ -7,8 +7,12 @@
             <form action="/ngo_store" method="POST">
                 {{ csrf_field() }}
               <div class="form-group">
-                <label for="name">Full_Name:<span class="mandatory">*</span></label>
-                <input type="text" class="form-control" name="name" id="name" required="required">
+                <label for="name">NGO Name:<span class="mandatory">*</span></label>
+                <input type="text" class="form-control" name="ngo_name" id="name" required="required">
+              </div>
+              <div class="form-group">
+                <label for="name">Full Name:<span class="mandatory">*</span></label>
+                <input type="text" class="form-control" name="full_name" id="name" required="required">
               </div>
               <div class="form-group">
                 <label for="email">Email:<span class="mandatory">*</span></label>
@@ -53,7 +57,7 @@
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
             </form>
-            <a href="{{ url('#') }}">Login</a><br>
+            <a href="{{ url('/') }}">Login</a><br>
         </div>
     </div>
 </div>
