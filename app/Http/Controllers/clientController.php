@@ -54,7 +54,21 @@ class clientController extends Controller
 
     }
     public function privacyPolicy(Request $request){
-        dd($request->all());
+        // dd($request->agree);
+        if ($request->agree == "Agree") {
+            date_default_timezone_set('Asia/Kolkata');
+            $date = date('d-m-Y', time());
+            // dd($date);
+            $data = NgoInformationTable::find(4);
+            // dd($data);
+            $data->agreement=$date;
+            $data->save();
+
+        }
+        elseif ($request->agree == "Disagree") {
+            dd("Disagreed zal");
+        }
+
     }
     public function privacy(){
         return view('ngo');

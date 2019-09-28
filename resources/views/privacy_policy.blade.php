@@ -231,12 +231,13 @@
 <form action="/privacyPolicy" method="POST">
 	{{ csrf_field() }}
 	 <div class="radio">
-	  <label><input type="radio" name="radio" value="Agree">Agree</label>
+	  <label><input type="radio" name="agree" value="Agree">Agree</label>
 	</div>
 	<div class="radio">
-	  <label><input type="radio" name="radio" value="Disagree">Disagree</label>
+	  <label><input type="radio" name="agree" value="Disagree">Disagree</label>
 	</div> 
-	<a href="#" class="btn btn-info">Next</a>
+	<!-- <a href="#" vclass="btn btn-info">Next</a> -->
+	<input type="submit" class="btn btn-info" name="" value="Next">
 </form>
 
 	</div>	

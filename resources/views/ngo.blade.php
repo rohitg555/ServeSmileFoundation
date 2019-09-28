@@ -31,10 +31,10 @@
                 <input type="number" class="form-control" name="alternate_mobile" id="email">
               </div>
               <div class="form-group">
-                <label for="Address">Address:</label>
+                <label for="Address">Address:<span class="mandatory">*</span></label>
                 <textarea class="form-control" rows="5" id="Address" name="address"></textarea>
               </div> 
-              <label>disaster:</label>
+              <label>disaster:<span class="mandatory">*</span></label>
               <div class="checkbox">
                 <label><input type="checkbox" name="disaster[]"  value="Earthquake">Earthquake.</label>
               </div>
