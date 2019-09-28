@@ -18,7 +18,8 @@ class clientController extends Controller
         // $verification_string = md5(microtime());
         // dd($request->all());
          $client = new client();
-         $client->full_name = $request->name;
+         $client->ngo_name = $request->ngo_name;
+         $client->full_name = $request->ngo_name;
          $client->email = $request->email;
          $client->alternate_email = $request->alternate_email;
          $client->mobile = $request->mobile;
@@ -51,5 +52,25 @@ class clientController extends Controller
         $data->agreement;
 
 
+    }
+    public function privacyPolicy(Request $request){
+        // dd($request->agree);
+        if ($request->agree == "Agree") {
+            date_default_timezone_set('Asia/Kolkata');
+            $date = date('d-m-Y', time());
+            // dd($date);
+            $data = NgoInformationTable::find(4);
+            // dd($data);
+            $data->agreement=$date;
+            $data->save();
+
+        }
+        elseif ($request->agree == "Disagree") {
+            dd("Disagreed zal");
+        }
+
+    }
+    public function privacy(){
+        return view('ngo');
     }
 }

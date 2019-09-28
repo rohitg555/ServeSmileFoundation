@@ -107,8 +107,10 @@
 
 
 
-<body class="legal backpage">
-<h1>Privacy Policy</h1>
+<div class="container">
+	<div class="row">
+<body class="Legal backpage">
+		<h1>Privacy Policy</h1>
   
  <h3 class="typography-subsection-headline">The ServeSmileFoundation Privacy Policy was updated on August 29, 2019.</h3>
 <p class="typography typography-intro large-8 medium-10 small-12 center">Your privacy is important to ServeSmileFoundation so we’ve developed a Privacy Policy that covers how we collect, use, disclose, transfer, and store your personal information.</p>
@@ -226,16 +228,20 @@
 
 
 	<link rel="stylesheet" href="https://images.apple.com/ac/localnav/4/styles/ac-localnav.built.css"/>
-<form>
+<form action="/privacyPolicy" method="POST">
+	{{ csrf_field() }}
 	 <div class="radio">
-	  <label><input type="radio" name="optradio" checked>Agree</label>
+	  <label><input type="radio" name="agree" value="Agree">Agree</label>
 	</div>
 	<div class="radio">
-	  <label><input type="radio" name="optradio">Disagree</label>
+	  <label><input type="radio" name="agree" value="Disagree">Disagree</label>
 	</div> 
+	<!-- <a href="#" vclass="btn btn-info">Next</a> -->
+	<input type="submit" class="btn btn-info" name="" value="Next">
 </form>
-<a href="" class="btn btn-info">Next</a>
 
+	</div>	
+</div>
 
 
 </body>

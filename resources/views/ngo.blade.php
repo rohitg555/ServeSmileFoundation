@@ -7,8 +7,12 @@
             <form action="/ngo_store" method="POST">
                 {{ csrf_field() }}
               <div class="form-group">
-                <label for="name">Full_Name:<span class="mandatory">*</span></label>
-                <input type="text" class="form-control" name="name" id="name" required="required">
+                <label for="name">NGO Name:<span class="mandatory">*</span></label>
+                <input type="text" class="form-control" name="ngo_name" id="name" required="required">
+              </div>
+              <div class="form-group">
+                <label for="name">Full Name:<span class="mandatory">*</span></label>
+                <input type="text" class="form-control" name="full_name" id="name" required="required">
               </div>
               <div class="form-group">
                 <label for="email">Email:<span class="mandatory">*</span></label>
@@ -27,10 +31,10 @@
                 <input type="number" class="form-control" name="alternate_mobile" id="email">
               </div>
               <div class="form-group">
-                <label for="Address">Address:</label>
+                <label for="Address">Address:<span class="mandatory">*</span></label>
                 <textarea class="form-control" rows="5" id="Address" name="address"></textarea>
               </div> 
-              <label>disaster:</label>
+              <label>disaster:<span class="mandatory">*</span></label>
               <div class="checkbox">
                 <label><input type="checkbox" name="disaster[]"  value="Earthquake">Earthquake.</label>
               </div>
@@ -53,7 +57,7 @@
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
             </form>
-            <a href="{{ url('#') }}">Login</a><br>
+            <a href="{{ url('/') }}">Login</a><br>
         </div>
     </div>
 </div>

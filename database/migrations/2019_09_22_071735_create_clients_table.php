@@ -15,6 +15,7 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('ngo_name');
             $table->string('full_name');
             $table->string('email');
             $table->string('alternate_email')->nullable();
