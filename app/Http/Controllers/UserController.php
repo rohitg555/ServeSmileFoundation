@@ -135,7 +135,8 @@ class UserController extends Controller
             $data->amount = $request->amount;
             $data->save();
             // dd("jhal");
-            return redirect("#");
+            return redirect("")->back();
+            // return view("sign");
            }
 
 

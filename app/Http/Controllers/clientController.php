@@ -77,9 +77,10 @@ class clientController extends Controller
               $ngo_data = Client::where('id',$ngo_id)->first();
               $email = $ngo_data->email;
 
-                $data = User::where('email', $email)->first();
+                // $data = User::where('email', $email)->first();
+                // dd($email);
 
-                if ($data) {
+                if ($ngo_data) {
 
                     DB::table('users')
                     ->where('email',$email)
