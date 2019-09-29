@@ -231,6 +231,7 @@
 <form action="/privacyPolicy" method="POST">
 	{{ csrf_field() }}
 	 <div class="radio">
+	 	<input type="hidden" name="ngo_id" value="{{$ngo_id}}">
 	  <label><input type="radio" name="agree" value="Agree">Agree</label>
 	</div>
 	<div class="radio">

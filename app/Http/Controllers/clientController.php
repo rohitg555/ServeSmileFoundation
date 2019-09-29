@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\client;
 use App\NgoInformationTable;
+use App\User;
+use DB;
+use Mail;
+
 
 
 class clientController extends Controller
@@ -44,33 +48,83 @@ class clientController extends Controller
         // dd($data->agreement);
         // dd($data->email_verification);
         if ($data->agreement == null) {
-            return view('privacy_policy');
+            return view('privacy_policy', compact('ngo_id'));
         }
-        else {
-            // "update agreement to curent date"
+        elseif ($data->email_verification == null) {
+            return view("email_verification", compact('ngo_id'));
         }
         $data->agreement;
 
 
     }
     public function privacyPolicy(Request $request){
-        // dd($request->agree);
+        $ngo_id = $request->ngo_id;
         if ($request->agree == "Agree") {
             date_default_timezone_set('Asia/Kolkata');
             $date = date('d-m-Y', time());
             // dd($date);
-            $data = NgoInformationTable::find(4);
+            $data = NgoInformationTable::find($ngo_id);
             // dd($data);
             $data->agreement=$date;
+            $data->save(); 
+
+                $verification_string = md5(microtime());
+            $data = Client::find($ngo_id);
+            // dd($data);
+            $data->verification_string=$verification_string;
             $data->save();
 
-        }
-        elseif ($request->agree == "Disagree") {
-            dd("Disagreed zal");
-        }
+              $ngo_data = Client::where('id',$ngo_id)->first();
+              $email = $ngo_data->email;
+
+                $data = User::where('email', $email)->first();
+
+                if ($data) {
+
+                    DB::table('users')
+                    ->where('email',$email)
+                    ->update(['forgot_pswd_verification_string'=>$verification_string]);
+
+                    $message_data = ["email"=>$email];
+                    Mail::send('ngo_email_confirmation', [ 'message_data' => $message_data, 'verification_string'=> $verification_string], function ($message) use($message_data)
+                     {
+                        $message->from('akashb.m786@gmail.com');
+                        $message->to($message_data['email'])->subject('NGO Email verification');
+                    });  
+                    // dd("aat ala");
+                    $success = "Email sent for verification. Please check your inbox.";
+                    return view('email_verification', compact('success'));
+                }
+                else {
+                    // dd("baher gela");
+                    // dd("aat alela gela");
+                    $message = "This use does not exist.";
+                    return view('forgot_password', compact('message'));
+
+                }
+
+
+                }
+                elseif ($request->agree == "Disagree") {
+                    dd("Disagreed zal");
+                }
 
     }
     public function privacy(){
         return view('ngo');
+    }
+   public function ngoVerification($verification_string) {
+        // dd($verification_string);
+        $flag = Client::where('verification_string', $verification_string)->first();
+        // dd($flag);
+        if ($flag) {
+            return view('dashboard');
+        }
+        else {
+            // dd("Not verified");
+            return view('verify_mail_error');
+
+        }
+        return view('verify_email');
     }
 }
