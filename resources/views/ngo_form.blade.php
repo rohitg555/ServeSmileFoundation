@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-sm-offset-6 col-sm-3">
 			<h3>Donation form</h3>
-			<form action="/donationForm" method="POST">
+		<form action="/donationForm" method="POST">
         {{csrf_field()}}
 				<div class="form-group">
 					<label for="name">NGO NAME <span class="mandatory">*</span></label>

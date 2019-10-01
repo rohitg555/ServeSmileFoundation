@@ -138,7 +138,12 @@ class UserController extends Controller
             $data->amount = $request->amount;
             $data->save();
             // dd("jhal");
+<<<<<<< HEAD
             return redirect()->back();
+=======
+            return redirect("")->back();
+            // return view("sign");
+>>>>>>> dd1ba031c815658c860ab9782371f03cb4ec92df
            }
             public function read(Request  $request){
              $service=Contribution::all();
