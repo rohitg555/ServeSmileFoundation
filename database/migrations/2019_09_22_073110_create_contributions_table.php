@@ -15,6 +15,7 @@ class CreateContributionsTable extends Migration
     {
         Schema::create('contributions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('ngo_id')
             $table->string('ngo_name');
             $table->integer('aadhaar_card_no');
             $table->string('email');

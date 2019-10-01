@@ -31,3 +31,4 @@ Route::get("/ngo_dashboard/{ngo_id}", 'clientController@ngoDashboard');
 Route::get("/privacyPolicy" , 'clientController@privacy');
 Route::post("/privacyPolicy" , 'clientController@privacyPolicy');
 Route::get("/verify_ngo/{verification_string}" , 'clientController@ngoVerification');
+Route::get("/dashboard" , 'UserController@read');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Client;
 use Mail;
 use DB;
 use App\Contribution;
@@ -124,7 +125,9 @@ class UserController extends Controller
 
            }
            public function donationForm(Request $request){
-            return view("ngo_form");
+            $clients = Client::all();
+            // dd($clients);
+            return view("ngo_form", compact('clients'));
            }
            public function ngoDonation(Request $request){
             $data = new Contribution();
@@ -135,8 +138,13 @@ class UserController extends Controller
             $data->amount = $request->amount;
             $data->save();
             // dd("jhal");
-            return redirect("#");
+            return redirect()->back();
            }
+            public function read(Request  $request){
+             $service=Contribution::all();
+              // dd($service);
+                return view('dashboard' , compact('service'));
+            }
 
 
 

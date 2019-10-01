@@ -8,7 +8,13 @@
         {{csrf_field()}}
 				<div class="form-group">
 					<label for="name">NGO NAME <span class="mandatory">*</span></label>
-					<input type="text" name="ngo_name" id="name" class="form-control">
+					<select class="form-control" name="ngo_name">
+						@foreach($clients as $client)
+							<option value="{{$client->ngo_name}}">{{$client->ngo_name}}</option>
+						@endforeach
+					</select>
+
+					<!-- <input type="text" name="ngo_name" id="name" class="form-control"> -->
 				</div>
 				<div class="form-group">
 					<label for="name">Aadhaar card no <span class="mandatory">*</span></label>
