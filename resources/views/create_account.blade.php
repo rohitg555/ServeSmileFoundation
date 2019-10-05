@@ -37,7 +37,7 @@
               </div>
               <div class="form-group">
                 <label for="email">Mobile <span class="mandatory">*</span></label>
-                <input type="number" class="form-control" name="mobile" id="email" required="required">
+                <input type="text" class="form-control" name="mobile" id="email" required="required">
               </div>
 
               <div class="form-group">
@@ -60,7 +60,7 @@
       // alert('pok')
       e.preventDefault()
       $.ajax({
-        url: '/create_account',
+        url: '/create_account_data',
         method: 'POST',
         data: new FormData(this),
               headers:{
@@ -81,7 +81,8 @@
           // alert('Submitted Successfully.')
         },
         error: function(obj) {
-          alert("success")
+          alert("error")
+
           console.log(obj)
           $(".alert-danger").remove()
           $.each(obj.responseJSON.errors, function(key, val) {

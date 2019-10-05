@@ -24,7 +24,11 @@ class UserController extends Controller
          // dd("aat ala");
             $response="This User already exists!";
             return $response;
+<<<<<<< HEAD
             // return view('create_account', compact('response'));
+=======
+            return view('create_account', compact('data'));
+>>>>>>> f40bc01253e1b8c084c2823fe406e940b1d2661a
          }         
          dd("baher ala");
 
