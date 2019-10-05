@@ -19,6 +19,8 @@ class clientController extends Controller
 
      public function ngoAccountStore(Request $request)
     {
+
+
         // $verification_string = md5(microtime());
         // dd($request->all());
         $response = client::where('email', $request->email)->first();
@@ -28,6 +30,19 @@ class clientController extends Controller
             return $response;
             // return view('create_account', compact('response'));
          }         
+         dd("ver ala");
+        $this->validate($request,[
+            'ngo_name'=> 'required',
+            'full_name'=> 'required',
+            'email'=> 'required|email',
+            'gender'=> 'required',
+            'mobile'=> 'required|numeric|digits:10',
+            'address'=> 'required',
+            'email'=> 'required|email',
+            'password'=> 'required|min:6',
+            'confirm_password'=> 'required|same:password|min:6',
+        ]);
+         dd("khali ala");
 
 
          $client = new client();
