@@ -1,11 +1,15 @@
 @include('include.app')
 @include('include.header')
 <div class="container">
+  <div class="row">
+    <ul class="errors">
+      
+    </ul>
+  </div>
     <div class="row">
         <div class="col-sm-offset-3 col-sm-6">
             <h3>Crate an account</h3>
-            <form action="/register" method="POST">
-                {{ csrf_field() }}
+            <form id="user_form">
               <div class="form-group">
                 <label for="email">Name <span class="mandatory">*</span></label>
                 <input type="text" class="form-control" name="name" id="email" required="required">
@@ -34,5 +38,45 @@
     </div>
 </div>
 
+
+
+
+<script type="text/javascript">
+  $(function() {
+    $("#user_form").on("submit", function(e) {
+      // alert('pok')
+      e.preventDefault()
+      $.ajax({
+        url: '/register',
+        method: 'POST',
+        data: new FormData(this),
+              headers:{
+                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
+               },   
+        processData: false,
+        contentType: false,
+        success: function(obj) {
+          // alert("success")
+          $(".alert-danger").remove()
+          $(".success_msg").html("<li class='alert alert-success'>Submitted successfully!</li>")
+          // alert('Submitted Successfully.')
+        },
+        error: function(obj) {
+          // alert("error")
+          console.log(obj)
+          $(".alert-danger").remove()
+          $.each(obj.responseJSON.errors, function(key, val) {
+            // alert(val)
+            $(".errrors").append("<li class='alert alert-danger'>"+val+"</li>")
+            // console.log(val)
+          })
+
+          // alert("Server Error occured! PLease contact supprt team.")
+        }
+      })
+    })
+  })
+
+</script>
 </body>
 </html>
