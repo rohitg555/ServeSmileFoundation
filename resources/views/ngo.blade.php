@@ -1,11 +1,19 @@
 @include('include.app')
 @include('include.header')
 <div class="container">
+  <div> class="row">
+    <ul class="errors">
+    </ul>
+    <div>
+      <span class="alert alert-danger already_exists_error">
+        This user already exists!
+      </span>
+    </div>
     <div class="row">
         <div class="col-sm-offset-3 col-sm-6">
             <h3>Crate an account</h3>
-            <form action="/ngo_store" method="POST">
-                {{ csrf_field() }}
+            <form>
+                
               <div class="form-group">
                 <label for="name">NGO Name:<span class="mandatory">*</span></label>
                 <input type="text" class="form-control" name="ngo_name" id="name" required="required">
@@ -62,5 +70,49 @@
     </div>
 </div>
 
+
+
+
+<script type="text/javascript">
+  $(function() {
+    $("#user_form").on("submit", function(e) {
+      // alert('pok')
+      e.preventDefault()
+      $.ajax({
+        url: '/ngo_store',
+        method: 'POST',
+        data: new FormData(this),
+              headers:{
+                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
+               },   
+        processData: false,
+        contentType: false,
+        success: function(obj) {
+          // alert("success")
+          console.log(obj)
+          if (obj=='This User already exists!') {
+              $(".already_exists_error").show()
+            // $(".errrors").append("<li class='alert alert-danger'>"+obj+"</li>")
+          }
+          // $(".alert-danger").remove()
+
+          $(".success_msg").html("<li class='alert alert-success'>Submitted successfully!</li>")
+          // alert('Submitted Successfully.')
+        },
+        error: function(obj) {
+          alert("success")
+          console.log(obj)
+          $(".alert-danger").remove()
+          $.each(obj.responseJSON.errors, function(key, val) {
+            // alert(val)
+            $(".errrors").append("<li class='alert alert-danger'>"+val+"</li>")
+            // console.log(val)
+          })
+          // alert("Server Error occured! PLease contact supprt team.")
+        }
+      })
+    })
+  })
+</script>
 </body>
 </html>
