@@ -1,7 +1,12 @@
 @include('include.app')
+<style type="text/css">
+  .already_exists_error {
+    display: none;
+  }
+</style>
 @include('include.header')
 <div class="container">
-  <div> class="row">
+  <div class="row">
     <ul class="errors">
     </ul>
     <div>
@@ -12,7 +17,7 @@
     <div class="row">
         <div class="col-sm-offset-3 col-sm-6">
             <h3>Crate an account</h3>
-            <form>
+            <form id="ngo_form">
                 
               <div class="form-group">
                 <label for="name">NGO Name:<span class="mandatory">*</span></label>
@@ -75,7 +80,7 @@
 
 <script type="text/javascript">
   $(function() {
-    $("#user_form").on("submit", function(e) {
+    $("#ngo_form").on("submit", function(e) {
       // alert('pok')
       e.preventDefault()
       $.ajax({

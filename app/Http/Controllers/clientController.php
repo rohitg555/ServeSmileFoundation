@@ -21,6 +21,15 @@ class clientController extends Controller
     {
         // $verification_string = md5(microtime());
         // dd($request->all());
+        $response = client::where('email', $request->email)->first();
+        if($response) {
+         // dd("aat ala");
+            $response="This User already exists!";
+            return $response;
+            // return view('create_account', compact('response'));
+         }         
+
+
          $client = new client();
          $client->ngo_name = $request->ngo_name;
          $client->full_name = $request->ngo_name;
@@ -127,5 +136,7 @@ class clientController extends Controller
 
         }
     
+
+}
 
 }
