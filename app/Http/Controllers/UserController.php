@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Client;
 use Mail;
 use DB;
 use App\Contribution;
@@ -16,6 +17,17 @@ class UserController extends Controller
 
     public function accountStore(Request $request) {
     	// dd($request->all());
+         // dd($request->email);
+
+         $response = User::where('email', $request->email)->first();
+        if($response) {
+         // dd("aat ala");
+            $response="This User already exists!";
+            return $response;
+            // return view('create_account', compact('response'));
+         }         
+         dd("baher ala");
+
          $verification_string = md5(microtime());
     	 $user = new User();
     	 $user->name = $request->name;
@@ -124,7 +136,9 @@ class UserController extends Controller
 
            }
            public function donationForm(Request $request){
-            return view("ngo_form");
+            $clients = Client::all();
+            // dd($clients);
+            return view("ngo_form", compact('clients'));
            }
            public function ngoDonation(Request $request){
             $data = new Contribution();
@@ -135,10 +149,18 @@ class UserController extends Controller
             $data->amount = $request->amount;
             $data->save();
             // dd("jhal");
-            return redirect("")->back();
-            // return view("sign");
-           }
+             return redirect()->back();
 
-
+            }
+            public function read(Request  $request){
+             $service=Contribution::all();
+              // dd($service);
+                return view('dashboard' , compact('service'));
+            }
+            // public function showDonor(Request $request){
+            //     // $service=Contribution::find($id);
+            //     $service =false;
+            //     return view('dashboard' , compact('service'));
+            // }
 
 }

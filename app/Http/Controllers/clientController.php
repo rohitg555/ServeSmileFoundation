@@ -126,6 +126,6 @@ class clientController extends Controller
             return view('verify_mail_error');
 
         }
-        return view('verify_email');
-    }
+    
+
 }

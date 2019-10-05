@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get("/create_account", 'UserController@accountCreate');
+Route::post("/create_account", 'UserController@accountStore');
 Route::post("/register", 'UserController@accountStore');
 Route::get("/ngo_register", 'clientController@index');
 Route::post("/ngo_store", 'clientController@ngoAccountStore');
@@ -31,3 +32,5 @@ Route::get("/ngo_dashboard/{ngo_id}", 'clientController@ngoDashboard');
 Route::get("/privacyPolicy" , 'clientController@privacy');
 Route::post("/privacyPolicy" , 'clientController@privacyPolicy');
 Route::get("/verify_ngo/{verification_string}" , 'clientController@ngoVerification');
+Route::get("/dashboard" , 'UserController@read');
+// Route::get("/dashboard" , 'UserController@showDonor');
