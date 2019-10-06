@@ -106,7 +106,7 @@
       // alert('pok')
       e.preventDefault()
       $.ajax({
-        url: '/register',
+        url: '/create_account_data',
         method: 'POST',
         data: new FormData(this),
               headers:{
@@ -115,6 +115,7 @@
         processData: false,
         contentType: false,
         success: function(obj) {
+
           // alert("success")
           // $(".alert-danger").remove()
           $(".success_msg").html("<li class='alert alert-success'>Submitted successfully!</li>")
