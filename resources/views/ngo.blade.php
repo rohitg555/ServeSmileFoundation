@@ -7,6 +7,7 @@
 @include('include.header')
 <div class="container">
   <div class="row">
+
     <ul class="errors">
     </ul>
     <div>
@@ -21,15 +22,15 @@
                 
               <div class="form-group">
                 <label for="name">NGO Name:<span class="mandatory">*</span></label>
-                <input type="text" class="form-control" name="ngo_name" id="name" required="required">
+                <input type="text" class="form-control" name="ngo_name" id="name">
               </div>
               <div class="form-group">
                 <label for="name">Full Name:<span class="mandatory">*</span></label>
-                <input type="text" class="form-control" name="full_name" id="name" required="required">
+                <input type="text" class="form-control" name="full_name" id="name">
               </div>
               <div class="form-group">
                 <label for="email">Email:<span class="mandatory">*</span></label>
-                <input type="email" class="form-control" name="email" id="email" required="required">
+                <input type="email" class="form-control" name="email" id="email">
               </div>
               <div class="form-group">
                 <label for="email">Alternate Email:</label>
@@ -37,7 +38,7 @@
               </div>
               <div class="form-group">
                 <label for="email">Mobile:<span class="mandatory">*</span></label>
-                <input type="number" class="form-control" name="mobile" id="email" required="required">
+                <input type="number" class="form-control" name="mobile" id="email">
               </div>
               <div class="form-group">
                 <label for="email">Alternate Mobile:</label>
@@ -62,11 +63,11 @@
               </div> 
               <div class="form-group">
                 <label for="pwd">Password:<span class="mandatory">*</span></label>
-                <input type="password" class="form-control" id="pwd" name="password" required="required">
+                <input type="password" class="form-control" id="pwd" name="password">
               </div>
               <div class="form-group">
                 <label for="pwd">Confirm Password:<span class="mandatory">*</span></label>
-                <input type="password" class="form-control" id="pwd" name="confirm_password" required="required">
+                <input type="password" class="form-control" id="pwd" name="confirm_password">
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
             </form>
@@ -94,7 +95,23 @@
         contentType: false,
         success: function(obj) {
           // alert("success")
+          console.log("response ala server varun")
           console.log(obj)
+          console.log($.type(obj))
+
+          if ($.type(obj)=="object") {
+            ngo_id = obj["ngo_id"]
+            console.log("ngo id")
+            console.log(ngo_id)
+            window.setTimeout(function() {
+                window.location.href = '{{url('/ngo_dashboard')}}/'+ngo_id;
+            }, 1000);
+
+          }
+
+
+
+
           if (obj=='This User already exists!') {
               $(".already_exists_error").show()
             // $(".errrors").append("<li class='alert alert-danger'>"+obj+"</li>")

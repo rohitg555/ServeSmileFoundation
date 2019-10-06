@@ -19,9 +19,9 @@ class CreateClientsTable extends Migration
             $table->string('full_name');
             $table->string('email');
             $table->string('alternate_email')->nullable();
-            $table->string('verification_string');
-            $table->integer('mobile');
-            $table->integer('alternate_mobile')->nullable();
+            $table->string('verification_string')->nullable();
+            $table->string('mobile');
+            $table->string('alternate_mobile')->nullable();
             $table->text('address');
             $table->string('disaster');
             $table->string('password');

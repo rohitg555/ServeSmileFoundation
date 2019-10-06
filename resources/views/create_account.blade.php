@@ -54,57 +54,13 @@
         </div>
     </div>
 </div>
-  <script type="text/javascript">
-  $(function() {
-    $("#user_form").on("submit", function(e) {
-      // alert('pok')
-      e.preventDefault()
-      $.ajax({
-        url: '/create_account_data',
-        method: 'POST',
-        data: new FormData(this),
-              headers:{
-                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
-               },   
-        processData: false,
-        contentType: false,
-        success: function(obj) {
-          // alert("success")
-          console.log(obj)
-          if (obj=='This User already exists!') {
-              $(".already_exists_error").show()
-            // $(".errrors").append("<li class='alert alert-danger'>"+obj+"</li>")
-          }
-          // $(".alert-danger").remove()
-
-          $(".success_msg").html("<li class='alert alert-success'>Submitted successfully!</li>")
-          // alert('Submitted Successfully.')
-        },
-        error: function(obj) {
-          alert("error")
-
-          console.log(obj)
-          $(".alert-danger").remove()
-          $.each(obj.responseJSON.errors, function(key, val) {
-            // alert(val)
-            $(".errrors").append("<li class='alert alert-danger'>"+val+"</li>")
-            // console.log(val)
-          })
-          // alert("Server Error occured! PLease contact supprt team.")
-        }
-      })
-    })
-  })
-</script>
-
-
 
 
 <script type="text/javascript">
   $(function() {
     $("#user_form").on("submit", function(e) {
-      // alert('pok')
       e.preventDefault()
+      // alert('pok')
       $.ajax({
         url: '/create_account_data',
         method: 'POST',
