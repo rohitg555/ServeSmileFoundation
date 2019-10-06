@@ -26,7 +26,7 @@ class UserController extends Controller
             return $response;
             // return view('create_account', compact('response'));
          }         
-         dd("baher ala");
+         // dd("baher ala");
 
          $verification_string = md5(microtime());
     	 $user = new User();

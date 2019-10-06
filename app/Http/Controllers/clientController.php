@@ -30,19 +30,19 @@ class clientController extends Controller
             return $response;
             // return view('create_account', compact('response'));
          }         
-         dd("ver ala");
+         // dd("ver ala");
         $this->validate($request,[
             'ngo_name'=> 'required',
             'full_name'=> 'required',
             'email'=> 'required|email',
-            'gender'=> 'required',
+            'disaster'=> 'required',
             'mobile'=> 'required|numeric|digits:10',
             'address'=> 'required',
             'email'=> 'required|email',
             'password'=> 'required|min:6',
             'confirm_password'=> 'required|same:password|min:6',
         ]);
-         dd("khali ala");
+         // dd("khali ala");
 
 
          $client = new client();
@@ -56,21 +56,25 @@ class clientController extends Controller
          $disaster = implode(',', $request->disaster);
          $client->disaster = $disaster;
          $client->password = $request->password;
-         // $client->verification_string = $verification_string;
          $client->save();
          $ngo_id = $client->id;
          // dd($ngo_id);
          $ngo_info = new NgoInformationTable();
          $ngo_info->ngo_id = $client->id;
          $ngo_info->save();
-         $url = '/ngo_dashboard/'.$ngo_id;
-         return redirect($url);
+         # $url = '/ngo_dashboard/'.$ngo_id;
+         // return redirect($url);
+        $response["ngo_id"] = $ngo_id; 
+        $response["ngo_status"] = "NGO registered";
+
+        return $response;
     }
     public function ngoDashboard(Request $request, $ngo_id){
         // dd($ngo_id);
         $data = NgoInformationTable::where('ngo_id' , $ngo_id)->first();
         // dd($data->agreement);
         // dd($data->email_verification);
+
         if ($data->agreement == null) {
             return view('privacy_policy', compact('ngo_id'));
         }
@@ -83,11 +87,12 @@ class clientController extends Controller
     }
     public function privacyPolicy(Request $request){
         $ngo_id = $request->ngo_id;
+        // dd($ngo_id);
         if ($request->agree == "Agree") {
             date_default_timezone_set('Asia/Kolkata');
             $date = date('d-m-Y', time());
             // dd($date);
-            $data = NgoInformationTable::find($ngo_id);
+            $data = NgoInformationTable::where('ngo_id', $ngo_id)->first();
             // dd($data);
             $data->agreement=$date;
             $data->save(); 

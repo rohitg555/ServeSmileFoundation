@@ -95,7 +95,23 @@
         contentType: false,
         success: function(obj) {
           // alert("success")
+          console.log("response ala server varun")
           console.log(obj)
+          console.log($.type(obj))
+
+          if ($.type(obj)=="object") {
+            ngo_id = obj["ngo_id"]
+            console.log("ngo id")
+            console.log(ngo_id)
+            window.setTimeout(function() {
+                window.location.href = '{{url('/ngo_dashboard')}}/'+ngo_id;
+            }, 1000);
+
+          }
+
+
+
+
           if (obj=='This User already exists!') {
               $(".already_exists_error").show()
             // $(".errrors").append("<li class='alert alert-danger'>"+obj+"</li>")

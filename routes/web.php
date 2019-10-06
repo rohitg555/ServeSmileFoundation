@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get("/create_account", 'UserController@accountCreate');
-Route::post("/create_account", 'UserController@accountStore');
+// Route::post("/create_account", 'UserController@accountStore');
 Route::post("/register", 'UserController@accountStore');
 Route::get("/ngo_register", 'clientController@index');
 Route::post("/ngo_store", 'clientController@ngoAccountStore');
