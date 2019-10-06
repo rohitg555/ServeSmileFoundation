@@ -27,6 +27,15 @@ class UserController extends Controller
             // return view('create_account', compact('response'));
          }         
          // dd("baher ala");
+            $this->validate($request,[
+            'name'=> 'required',
+            'email'=> 'required|email',
+            'mobile'=> 'required|numeric|digits:10',
+            'password'=> 'required|min:6',
+            'confirm_password'=> 'required|same:password|min:6',
+            ]);
+         dd("khali ala");
+
 
          $verification_string = md5(microtime());
     	 $user = new User();
@@ -35,6 +44,7 @@ class UserController extends Controller
     	 $user->mobile = $request->mobile;
     	 $user->password = $request->password;
          $user->verification_string = $verification_string;
+
 
          // dd($verification_string);
 

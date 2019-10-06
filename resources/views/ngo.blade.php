@@ -8,7 +8,7 @@
 <div class="container">
   <div class="row">
 
-    <ul class="errors">
+    <ul class="errors" style="list-style-type: none;">
     </ul>
     <div>
       <span class="alert alert-danger already_exists_error">
@@ -23,6 +23,7 @@
               <div class="form-group">
                 <label for="name">NGO Name:<span class="mandatory">*</span></label>
                 <input type="text" class="form-control" name="ngo_name" id="name">
+                 {!! $errors->first('NGO Name', '<p class="help-block">:message</p>') !!}
               </div>
               <div class="form-group">
                 <label for="name">Full Name:<span class="mandatory">*</span></label>
@@ -122,12 +123,12 @@
           // alert('Submitted Successfully.')
         },
         error: function(obj) {
-          alert("success")
-          console.log(obj)
-          $(".alert-danger").remove()
+          alert("error")
+          console.log(obj.responseJSON.errors)
+          // $(".alert-danger").remove()
           $.each(obj.responseJSON.errors, function(key, val) {
-            // alert(val)
-            $(".errrors").append("<li class='alert alert-danger'>"+val+"</li>")
+            alert(val)
+            $(".errors").append("<li class='alert alert-danger'>"+val+"</li>")
             // console.log(val)
           })
           // alert("Server Error occured! PLease contact supprt team.")
