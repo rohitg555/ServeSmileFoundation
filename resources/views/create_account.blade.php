@@ -7,8 +7,11 @@
 @include('include.header')
 <div class="container">
   <div class="row">
-    <ul class="errors">
+    <ul class="errrors">
     </ul>
+    <div class="success_msg">
+      
+    </div>
     <div>
       <span class="alert alert-danger already_exists_error">
         This user already exists!
@@ -28,25 +31,25 @@
             <h3>Crate an account</h3>
             <form id="user_form">
               <div class="form-group">
-                <label for="email">Name <span class="mandatory">*</span></label>
-                <input type="text" class="form-control" name="name" id="email" required="required">
+                <label for="name">Name <span class="mandatory">*</span></label>
+                <input type="text" class="form-control" name="name" id="email">
               </div>
               <div class="form-group">
                 <label for="email">Email <span class="mandatory">*</span></label>
-                <input type="email" class="form-control" name="email" id="email" required="required">
+                <input type="email" class="form-control" name="email" id="email">
               </div>
               <div class="form-group">
                 <label for="email">Mobile <span class="mandatory">*</span></label>
-                <input type="text" class="form-control" name="mobile" id="email" required="required">
+                <input type="text" class="form-control" name="mobile" id="email">
               </div>
 
               <div class="form-group">
                 <label for="pwd">Password <span class="mandatory">*</span></label>
-                <input type="password" class="form-control" id="pwd" name="password" required="required">
+                <input type="password" class="form-control" id="pwd" name="password">
               </div>
               <div class="form-group">
                 <label for="pwd">Confirm Password <span class="mandatory">*</span></label>
-                <input type="password" class="form-control" id="pwd" name="confirm_password" required="required">
+                <input type="password" class="form-control" id="pwd" name="confirm_password">
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
             </form>
@@ -71,13 +74,17 @@
         processData: false,
         contentType: false,
         success: function(obj) {
-          // alert("success")
-          // $(".alert-danger").remove()
+          alert("success")
+          $(".alert-danger").remove()
           $(".success_msg").html("<li class='alert alert-success'>Submitted successfully!</li>")
+
+          window.setTimeout(function() {
+            window.location.href = '{{url('/dashboard')}}';
+          }, 1000);
           // alert('Submitted Successfully.')
         },
         error: function(obj) {
-          // alert("error")
+          alert("error")
           console.log(obj)
           $(".alert-danger").remove()
           $.each(obj.responseJSON.errors, function(key, val) {
