@@ -23,7 +23,6 @@
               <div class="form-group">
                 <label for="name">NGO Name:<span class="mandatory">*</span></label>
                 <input type="text" class="form-control" name="ngo_name" id="name">
-                 {!! $errors->first('NGO Name', '<p class="help-block">:message</p>') !!}
               </div>
               <div class="form-group">
                 <label for="name">Full Name:<span class="mandatory">*</span></label>

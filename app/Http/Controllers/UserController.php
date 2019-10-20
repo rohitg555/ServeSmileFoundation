@@ -172,5 +172,26 @@ class UserController extends Controller
             //     $service =false;
             //     return view('dashboard' , compact('service'));
             // }
+            public function uploadImage() {
+                return view('image_upload');
+            }
 
+            public function saveImage(Request $request) {
+                // dd($_FILES['image_upload']['name']);
+
+                $image_name =$_FILES['image_upload']['name'];
+
+                if ($_FILES['image_upload']['tmp_name']) {
+                    $unique_id = uniqid();
+                    $target_dir = "assets/imgs/";
+                    $target_file = $target_dir .$unique_id. basename($image_name);
+                    move_uploaded_file($_FILES["image_upload"]["tmp_name"], $target_file);
+                    $uploaded_successfully = True;
+                    return view('image_upload', compact('uploaded_successfully'));
+                }
+                else {
+                    // dd("baher gel");
+                }
+                return view('image_upload');
+            }
 }

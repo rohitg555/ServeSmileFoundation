@@ -34,3 +34,5 @@ Route::post("/privacyPolicy" , 'clientController@privacyPolicy');
 Route::get("/verify_ngo/{verification_string}" , 'clientController@ngoVerification');
 Route::get("/dashboard" , 'UserController@read');
 // Route::get("/dashboard" , 'UserController@showDonor');
+Route::get("/image_upload" , 'UserController@uploadImage');
+Route::post("/saveImage" , 'UserController@saveImage');
