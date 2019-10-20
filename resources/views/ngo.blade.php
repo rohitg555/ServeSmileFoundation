@@ -95,7 +95,7 @@
         contentType: false,
         success: function(obj) {
           // alert("success")
-          console.log("response ala server varun")
+          // console.log("response ala server varun")
           console.log(obj)
           console.log($.type(obj))
 
