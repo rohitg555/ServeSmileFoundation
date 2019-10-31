@@ -18,7 +18,8 @@
 				<label>Upload Image</label>
 				<input class="form-control" type="file" name="image_upload">
 				<br>
-				<input type="submit" class="form-control btn btn-success" name="">
+				<!-- <input type="submit" class="form-control btn btn-success" name=""> -->
+				<button type="submit" class="btn btn-success">submit</button>
 			</form>
 		</div>
 	</div>

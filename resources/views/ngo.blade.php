@@ -122,11 +122,11 @@
           // alert('Submitted Successfully.')
         },
         error: function(obj) {
-          alert("error")
+          // alert("error")
           console.log(obj.responseJSON.errors)
           // $(".alert-danger").remove()
           $.each(obj.responseJSON.errors, function(key, val) {
-            alert(val)
+            // alert(val)
             $(".errors").append("<li class='alert alert-danger'>"+val+"</li>")
             // console.log(val)
           })

@@ -15,7 +15,7 @@
 					<label for="name">NGO NAME <span class="mandatory">*</span></label>
 					<select class="form-control" name="ngo_name">
 						@foreach($clients as $client)
-							<option value="{{$client->ngo_name}}">{{$client->ngo_name}}</option>
+							<option value="{{$client->id }}|{{$client->ngo_name}}">{{$client->ngo_name}}</option>
 						@endforeach
 					</select>
 

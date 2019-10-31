@@ -156,15 +156,18 @@ class UserController extends Controller
             // dd("baher ala");
             $this->validate($request,[
             'ngo_name'=> 'required',
-            'aadhaar_card_no'=> 'required|numeric|digits:16',
+            'aadhaar_card_no'=> 'required|digits:12',
             'email'=> 'required|email',
-            'mobile_number'=> 'required|numeric|digits:10',
+            'mobile_number'=> 'required|digits:10',
             'amount'=>'required'
             ]);
-            dd("khali ala");
-
+            // dd("khali ala");
             $data = new Contribution();
-            $data->ngo_name = $request->ngo_name;
+            $ngo_details = explode('|', $request->ngo_name);
+            // dd(gettype((int)$data[0]));
+            $ngo_id = (int)$ngo_details[0];
+            $data->ngo_id = $ngo_id;
+            $data->ngo_name = $ngo_details[1];
             $data->aadhaar_card_no = $request->aadhaar_card_no;
             $data->email = $request->email;
             $data->mobile_number = $request->mobile_number;
