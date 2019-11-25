@@ -209,4 +209,5 @@ class UserController extends Controller
                 }
                 return view('image_upload');
             }
+        
 }

@@ -60,5 +60,12 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    }
+
+    },
+    
+  "require": {
+    "php": ">=7.1.0",
+    "twilio/sdk": "^5.21",
+    "vlucas/phpdotenv": "^2.5"
+  }
 }

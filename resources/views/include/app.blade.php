@@ -16,6 +16,13 @@
     		color: red;
 
     	}
+        body{
+            background-image: url('{{ url('/assets/imgs/1.jpg')  }}');
+            /*background-repeat: no-repeat;*/
+            background-size: cover;
+            color: 
+             
+        }
     </style>
 </head>
 <body>
